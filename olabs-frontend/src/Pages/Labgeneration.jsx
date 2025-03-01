@@ -5,13 +5,11 @@ import { Engine, Render, World, Bodies, Body, Constraint } from "matter-js";
 import { Chart, registerables } from "chart.js";
 import Web3 from "web3";
 
-// Import AceEditor modes and theme
 import "ace-builds/src-noconflict/mode-javascript";
 import "ace-builds/src-noconflict/mode-python";
 import "ace-builds/src-noconflict/mode-java";
 import "ace-builds/src-noconflict/mode-c_cpp";
 import "ace-builds/src-noconflict/mode-ruby";
-// import "ace-builds/src-noconflict/mode-go";
 import "ace-builds/src-noconflict/theme-github";
 
 Chart.register(...registerables);
