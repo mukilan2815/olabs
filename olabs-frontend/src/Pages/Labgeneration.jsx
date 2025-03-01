@@ -224,15 +224,46 @@ function BlockchainCertification({ labInfo, evaluationResult, onCertified }) {
   };
 
   return (
-    <div className="blockchain-certification">
-      <button onClick={handleCertify} disabled={loading}>
+    <div className="blockchain-certification" style={{ padding: '20px', textAlign: 'center' }}>
+      <button 
+        onClick={handleCertify} 
+        disabled={loading}
+        style={{
+          padding: '12px 24px',
+          fontSize: '16px',
+          fontWeight: 'bold',
+          backgroundColor: loading ? '#cccccc' : '#4CAF50',
+          color: 'white',
+          border: 'none',
+          borderRadius: '5px',
+          cursor: loading ? 'not-allowed' : 'pointer',
+          transition: 'all 0.3s ease',
+          boxShadow: '0 2px 4px rgba(0,0,0,0.2)',
+          marginBottom: '15px'
+        }}
+      >
         {loading ? "Saving to blockchain..." : "Certify Lab Result"}
       </button>
       {certLink && (
-        <div className="certificate-link">
-          <p>
+        <div className="certificate-link" style={{
+          marginTop: '15px',
+          padding: '15px',
+          backgroundColor: '#f5f5f5',
+          borderRadius: '5px',
+          border: '1px solid #ddd'
+        }}>
+          <p style={{ margin: '0' }}>
             Certificate:{" "}
-            <a href={certLink} target="_blank" rel="noopener noreferrer">
+            <a 
+              href={certLink} 
+              target="_blank" 
+              rel="noopener noreferrer"
+              style={{
+                color: '#2196F3',
+                textDecoration: 'none',
+                fontWeight: '500'
+              }}
+            >
               {certLink}
             </a>
           </p>
@@ -288,6 +319,16 @@ function LeaderboardChart({ leaderboard }) {
   return <canvas ref={canvasRef} />;
 }
 
+/* ===========================
+   Hackathon Tracks Component
+=========================== */
+function HackathonTracks() {
+  return (
+    <div className="hackathon-tracks">
+      <p>Track details coming soon.</p>
+    </div>
+  );
+}
 
 /* ===========================
    Pendulum Simulator Component
@@ -440,6 +481,7 @@ function LabSimulator({
     { id: "video", label: "Video" },
     { id: "selfEvaluation", label: "Self Evaluation" },
     { id: "certification", label: "Certification" },
+    // { id: "tracks", label: "Tracks" },
     { id: "resources", label: "Resources" },
   ];
 
@@ -600,6 +642,7 @@ function LabSimulator({
                   </div>
                 ) : (
                   <>
+                    {/* If lab type includes "pendulum", show the simulation */}
                     {labType.toLowerCase().includes("pendulum") && <PendulumSimulator />}
                     {/* Also, if simulator instructions exist from backend, display them */}
                     {simulator ? (
@@ -675,7 +718,12 @@ function LabSimulator({
                 />
               </div>
             )}
-           
+            {activeTab === "tracks" && (
+              <div className="tab-pane">
+                <h3>Hackathon Tracks</h3>
+                <HackathonTracks />
+              </div>
+            )}
             {activeTab === "resources" && (
               <div className="tab-pane">
                 <h3>Resources</h3>
