@@ -173,8 +173,8 @@ function BlockchainCertification({ labInfo, evaluationResult, onCertified }) {
       try {
         await window.ethereum.request({ method: "eth_requestAccounts" });
         const web3 = new Web3(window.ethereum);
-        const contractAddress = "0xYourContractAddress"; // Replace with your contract address
-        const contractABI = [ /* Replace with your contract ABI */ ];
+        const contractAddress = "0xYourContractAddress"; // update this with your contract address
+        const contractABI = [ /* your contract ABI here */ ];
         const contract = new web3.eth.Contract(contractABI, contractAddress);
         const accounts = await web3.eth.getAccounts();
         const labResult = {
